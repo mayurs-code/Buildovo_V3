@@ -1,16 +1,22 @@
 package com.cognition.buildovov3.view;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.media.Image;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.cognition.buildovov3.R;
@@ -22,6 +28,7 @@ import com.cognition.buildovov3.service.UserClient;
 import com.cognition.buildovov3.values.Constants;
 import com.cognition.buildovov3.view.adapters.BoxAllProductAdapter;
 import com.cognition.buildovov3.view.adapters.BoxSearchProductAdapter;
+import com.google.android.material.navigation.NavigationView;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 
 import java.util.ArrayList;
@@ -44,15 +51,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        methods();
         context = this;
+
+        initiators();
+        methods();
     }
+
+    private void initiators() {
+        drawerSideNavInitiator();
+    }
+
+    private void drawerSideNavInitiator() {
+    }
+    void sideNavOpener(){
+        NavigationView navigationView=(NavigationView)findViewById(R.id.sideNavMain);}
 
     private void methods() {
         tialOnclick();
         sendConstructionMaterialRequest();
         searchBarSearchListner();
+        sideNavOpener();
 
+    }
+
+    @SuppressLint("WrongConstant")
+    public void openDrawer(View view){
+        DrawerLayout drawerLayout= findViewById(R.id.mainDrawerLayout);
+        drawerLayout.openDrawer(Gravity.START);
     }
 
     private void tialOnclick() {
@@ -69,9 +94,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    void searchBarSearchListner()
-    {
-        MaterialSearchBar searchBar=(MaterialSearchBar)findViewById(R.id.materialSearch);
+    void searchBarSearchListner() {
+        MaterialSearchBar searchBar = (MaterialSearchBar) findViewById(R.id.materialSearch);
         searchBar.addTextChangeListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -80,11 +104,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(!charSequence.toString().isEmpty())
-                {
-                sendConstructionMaterialSearchRequest(charSequence.toString());
-                }
-                else {
+                if (!charSequence.toString().isEmpty()) {
+                    sendConstructionMaterialSearchRequest(charSequence.toString());
+                } else {
                     sendConstructionMaterialRequest();
                 }
 
@@ -121,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void sendConstructionMaterialSearchRequest(String search) {
-        Log.d(TAG, "onTextChanged: "+search.toString());
+        Log.d(TAG, "onTextChanged: " + search.toString());
 
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
@@ -133,15 +155,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArrayList<SearchedProduct>> call, Response<ArrayList<SearchedProduct>> response) {
                 constructionSearchProducts = response.body();
-                for (SearchedProduct product:constructionSearchProducts)
-                    Log.d(TAG, "onSearchProd: "+product.getProductName());
+                for (SearchedProduct product : constructionSearchProducts)
+                    Log.d(TAG, "onSearchProd: " + product.getProductName());
                 fillSearchedProductsConstruction(constructionSearchProducts);
             }
 
             @Override
             public void onFailure(Call<ArrayList<SearchedProduct>> call, Throwable t) {
                 Toast.makeText(context, "ERROR OCCURED", Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "onFailure: "+t.getMessage());
+                Log.d(TAG, "onFailure: " + t.getMessage());
 
 
             }
@@ -156,6 +178,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(boxAllProductAdapter);
 
     }
+
     void fillSearchedProductsConstruction(ArrayList<SearchedProduct> searchedProducts) {
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerProductsMain);
