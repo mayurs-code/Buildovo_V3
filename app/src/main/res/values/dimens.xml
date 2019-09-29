@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="squareSizeCard">75dp</dimen>
+    <dimen name="textSizeSmall">12sp</dimen>
+</resources>

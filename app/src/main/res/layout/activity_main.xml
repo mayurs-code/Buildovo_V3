@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".view.MainActivity">
+
+    <Button
+        android:id="@+id/trialOnclick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="@color/colorPrimaryDark"
+        android:text="TrialButton" />
+
+    <LinearLayout
+        android:paddingHorizontal="4dp"
+        android:paddingVertical="16dp"
+        android:background="@color/greyLight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:src="@drawable/menu_open"
+            android:paddingStart="16dp"
+            android:tint="@color/greyDark"
+            android:paddingEnd="8dp"
+            android:layout_gravity="center"
+            android:layout_height="match_parent" />
+
+        <com.mancj.materialsearchbar.MaterialSearchBar
+            android:id="@+id/materialSearch"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="8dp"
+            app:mt_roundedSearchBarEnabled="true"
+            app:mt_hint="example- cement"
+            android:elevation="0dp"
+            app:mt_placeholderColor="@color/greyMedium"
+            app:mt_textColor="@color/greyDark"
+            app:mt_placeholder="Search anything..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24sp"
+                    android:layout_marginVertical="8dp"
+                    android:textColor="@color/greyDark"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/categories"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:scrollbarFadeDuration="0"
+                android:background="@color/greyLight"
+                android:fadeScrollbars="true"
+                android:layout_gravity="center"
+                android:scrollbars="none"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_gravity="start"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_gravity="center"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/core_service1_cardview"
+                            android:layout_width="@dimen/squareSizeCard"
+                            android:layout_height="@dimen/squareSizeCard"
+                            app:cardCornerRadius="100dp"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+
+                            android:elevation="0dp"
+                            app:cardElevation="0dp"
+                            android:backgroundTint="@color/white">
+
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="16dp"
+                                app:srcCompat="@drawable/construction_materials" />
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginVertical="8dp"
+                            android:layout_weight="1"
+                            android:breakStrategy="high_quality"
+                            android:cursorVisible="false"
+                            android:fontFamily="@font/roboto_medium"
+                            android:gravity="center"
+                            android:lines="2"
+                            android:maxLines="2"
+                            android:minLines="2"
+                            android:text="Construction\nMaterials"
+                            android:textColor="@color/greyDark"
+                            android:textSize="@dimen/textSizeSmall" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+
+                        android:padding="16dp"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/core_service2_cardview"
+                            android:layout_width="@dimen/squareSizeCard"
+                            android:layout_height="@dimen/squareSizeCard"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/white"
+                            app:cardCornerRadius="100dp"
+                            android:layout_gravity="center"
+
+                            android:elevation="0dp"
+                            app:cardElevation="0dp"
+                            app:cardMaxElevation="8dp">
+
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:padding="16dp"
+                                app:srcCompat="@drawable/professional_services" />
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="8dp"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:breakStrategy="high_quality"
+                            android:cursorVisible="false"
+                            android:fontFamily="@font/roboto_medium"
+                            android:gravity="center"
+                            android:lines="2"
+                            android:maxLines="2"
+                            android:minLines="2"
+                            android:text="Professional\nServices"
+                            android:textColor="@color/greyDark"
+                            android:textSize="@dimen/textSizeSmall" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"                        android:layout_gravity="center"
+
+                        android:padding="16dp"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/core_service3_cardview"
+                            android:layout_width="@dimen/squareSizeCard"
+                            android:layout_height="@dimen/squareSizeCard"
+                            android:elevation="0dp"
+                            app:cardElevation="0dp"
+                            android:layout_gravity="center"
+
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/white"
+                            app:cardCornerRadius="100dp"
+                            app:cardMaxElevation="8dp">
+
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="16dp"
+                                app:srcCompat="@drawable/repairs_renovation" />
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="8dp"
+                            android:layout_weight="1"
+                            android:breakStrategy="high_quality"
+                            android:layout_gravity="center"
+
+                            android:cursorVisible="false"
+                            android:fontFamily="@font/roboto_medium"
+
+                            android:gravity="center"
+                            android:lines="2"
+                            android:maxLines="2"
+                            android:minLines="2"
+                            android:scrollbarSize="11sp"
+                            android:text="Repairs and\nRenovations"
+                            android:textColor="@color/greyDark"
+                            android:textSize="@dimen/textSizeSmall" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_gravity="center"
+
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/core_service4_cardview"
+                            android:elevation="0dp"
+                            app:cardElevation="0dp"
+
+                            android:layout_width="@dimen/squareSizeCard"
+                            android:layout_height="@dimen/squareSizeCard"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:backgroundTint="@color/white"
+                            app:cardCornerRadius="100dp"
+                            app:cardMaxElevation="8dp">
+
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+
+                                android:padding="16dp"
+                                app:srcCompat="@drawable/carriers_transport" />
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="8dp"
+                            android:layout_weight="1"
+                            android:breakStrategy="high_quality"
+                            android:layout_gravity="center"
+                            android:cursorVisible="false"
+                            android:fontFamily="@font/roboto_medium"
+                            android:gravity="center"
+                            android:lines="2"
+                            android:maxLines="2"
+                            android:minLines="2"
+                            android:text="Carriers and\nTransportation"
+                            android:textColor="@color/greyDark"
+                            android:textSize="@dimen/textSizeSmall" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24sp"
+                    android:layout_marginVertical="8dp"
+                    android:textColor="@color/greyDark"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Products"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@color/greyLight"
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerProductsMain"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
