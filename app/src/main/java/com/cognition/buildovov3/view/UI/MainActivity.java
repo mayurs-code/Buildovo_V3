@@ -1,22 +1,21 @@
-package com.cognition.buildovov3.view;
+package com.cognition.buildovov3.view.UI;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
-import android.media.Image;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.cognition.buildovov3.R;
@@ -26,8 +25,9 @@ import com.cognition.buildovov3.api.model.userEntity.UserRequest;
 import com.cognition.buildovov3.api.model.userEntity.UserResponse;
 import com.cognition.buildovov3.service.UserClient;
 import com.cognition.buildovov3.values.Constants;
-import com.cognition.buildovov3.view.adapters.BoxAllProductAdapter;
-import com.cognition.buildovov3.view.adapters.BoxSearchProductAdapter;
+import com.cognition.buildovov3.view.adapters.productAdapters.BoxAllProductAdapter;
+import com.cognition.buildovov3.view.adapters.productAdapters.BoxSearchProductAdapter;
+
 import com.google.android.material.navigation.NavigationView;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 
@@ -96,6 +96,26 @@ public class MainActivity extends AppCompatActivity {
 
     void searchBarSearchListner() {
         MaterialSearchBar searchBar = (MaterialSearchBar) findViewById(R.id.materialSearch);
+
+        searchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
+            @Override
+            public void onSearchStateChanged(boolean enabled) {
+
+            }
+
+            @Override
+            public void onSearchConfirmed(CharSequence text) {
+                if (!text.toString().isEmpty()) {
+                    sendConstructionMaterialSearchRequest(text.toString());
+                }
+                hideKeyboard(MainActivity.this);
+            }
+
+            @Override
+            public void onButtonClicked(int buttonCode) {
+
+            }
+        });
         searchBar.addTextChangeListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -117,6 +137,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     void sendConstructionMaterialRequest() {

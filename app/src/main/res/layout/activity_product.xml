@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/greyLight"
+    android:layout_height="match_parent"
+    tools:context=".view.UI.ProductActivity">
+
+
+
+    <com.smarteist.autoimageslider.SliderView
+        android:id="@+id/imageSliderProduct"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:sliderAnimationDuration="600"
+        app:sliderAutoCycleDirection="back_and_forth"
+        app:sliderAutoCycleEnabled="false"
+        app:sliderCircularHandlerEnabled="true"
+        app:sliderIndicatorAnimationDuration="600"
+
+        app:sliderIndicatorGravity="center_horizontal|left|bottom"
+        app:sliderIndicatorMargin="20dp"
+        app:sliderIndicatorOrientation="horizontal"
+        app:sliderIndicatorPadding="3dp"
+        app:sliderIndicatorRadius="1.6dp"
+        app:sliderIndicatorSelectedColor="@color/decentBlue"
+        app:sliderIndicatorUnselectedColor="@color/white"
+        app:sliderScrollTimeInSec="2"
+        app:sliderStartAutoCycle="true" />
+    <com.google.android.material.chip.Chip
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:checkable="false"
+        android:checked="true"
+        android:text="@string/rating_product"
+        android:textColor="@color/white"
+        app:checkedIconEnabled="false"
+        app:checkedIconVisible="false"
+        app:chipBackgroundColor="@color/decentBlue"
+        app:layout_constraintBottom_toBottomOf="@+id/imageSliderProduct"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/imageSliderProduct">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:textColor="@color/greyBlueDark2"
+            android:textSize="36dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Cement Acc Cement"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="16dp"
+            android:justificationMode="inter_word"
+            android:textColor="@color/greyDark"
+            android:text="ACC Limited is one of the largest producers of cement in India. It's registered office is called Cement House. It is located on Maharishi Karve Road, Mumbai. The stock price of company contributes in calculating BSE Sensex. The management control of company was taken over by Swiss cement major Holcim in 2004"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

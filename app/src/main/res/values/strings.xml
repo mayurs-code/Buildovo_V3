@@ -3,4 +3,17 @@
     <string name="categories">Categories</string>
     <string name="Open">NavBar</string>
     <string name="Close">NavBar</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="log_in">LOG IN</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="skip_login">Skip Login</string>
+    <string name="google_login">Login With Google</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="google_signup">Signup using Google</string>
+    <string name="terms_conditions_agree">Accept our Terms &amp; Conditions</string>
+    <string name="retype_password_hint">Retype Password</string>
+    <string name="mobile_number_hint">Contact Number</string>
+    <string name="goto_login">have accont? Login</string>
+    <string name="rating_product">Rating</string>
 </resources>

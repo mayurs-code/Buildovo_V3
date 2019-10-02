@@ -1,4 +1,4 @@
-package com.cognition.buildovov3.view.adapters;
+package com.cognition.buildovov3.view.adapters.productAdapters;
 
 import android.content.Context;
 import android.util.Log;
@@ -14,22 +14,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.cognition.buildovov3.R;
-import com.cognition.buildovov3.api.model.productEntity.construction.all.AllProducts;
-import com.cognition.buildovov3.api.model.productEntity.construction.all.MRP;
+import com.cognition.buildovov3.api.model.productEntity.construction.search.SearchedProduct;
 import com.cognition.buildovov3.values.Constants;
 
 import java.util.ArrayList;
 
-public class BoxAllProductAdapter extends RecyclerView.Adapter<BoxAllProductAdapter.ViewHolder> {
+public class BoxSearchProductAdapter extends RecyclerView.Adapter<BoxSearchProductAdapter.ViewHolder> {
     private static final String TAG="Recycler Adapter";
 
 
-    private ArrayList<AllProducts> allProducts =new ArrayList<>();
-    private ArrayList<MRP> MRP=new ArrayList<>();
+    private ArrayList<SearchedProduct> allProducts =new ArrayList<>();
     private Context mContext;
 
-    public BoxAllProductAdapter(ArrayList<AllProducts> allProducts, Context context) {
-        this.allProducts = allProducts;
+    public BoxSearchProductAdapter(ArrayList<SearchedProduct> searchedProducts, Context context) {
+        this.allProducts = searchedProducts;
         mContext = context;
 
     }
@@ -48,7 +46,7 @@ public class BoxAllProductAdapter extends RecyclerView.Adapter<BoxAllProductAdap
 
         String imageURL=Constants.BASE_IMAGE_URL+ allProducts.get(position).getImages().get(0);
         holder.productName.setText(allProducts.get(position).getProductName());
-        holder.productMRP.setText("₹"+allProducts.get(position).getMRP().get(0).getMRP().toString()+"/-");
+        holder.productMRP.setText("RS.800/-");
 
 
         Glide.with(mContext)
