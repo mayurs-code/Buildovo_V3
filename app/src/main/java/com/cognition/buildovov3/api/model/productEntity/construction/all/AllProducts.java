@@ -1,60 +1,19 @@
 
 package com.cognition.buildovov3.api.model.productEntity.construction.all;
 
-import java.util.List;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AllProducts {
 
-    @SerializedName("images")
-    @Expose
-    private List<String> images = null;
-    @SerializedName("MRP")
-    @Expose
-    private List<MRP> mRP = null;
-    @SerializedName("productStockType")
-    @Expose
-    private String productStockType;
-    @SerializedName("_id")
-    @Expose
     private String id;
-    @SerializedName("productName")
-    @Expose
-    private String productName;
-    @SerializedName("description")
-    @Expose
-    private String description;
-    @SerializedName("productCategory")
-    @Expose
-    private ProductCategory productCategory;
-    @SerializedName("__v")
-    @Expose
+    private Brand brand;
+    private Varient varient;
+    private Product product;
+    private Integer MRP;
     private Integer v;
-
-    public List<String> getImages() {
-        return images;
-    }
-
-    public void setImages(List<String> images) {
-        this.images = images;
-    }
-
-    public List<MRP> getMRP() {
-        return mRP;
-    }
-
-    public void setMRP(List<MRP> mRP) {
-        this.mRP = mRP;
-    }
-
-    public String getProductStockType() {
-        return productStockType;
-    }
-
-    public void setProductStockType(String productStockType) {
-        this.productStockType = productStockType;
-    }
+    private Size size;
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getId() {
         return id;
@@ -64,28 +23,36 @@ public class AllProducts {
         this.id = id;
     }
 
-    public String getProductName() {
-        return productName;
+    public Brand getBrand() {
+        return brand;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 
-    public String getDescription() {
-        return description;
+    public Varient getVarient() {
+        return varient;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setVarient(Varient varient) {
+        this.varient = varient;
     }
 
-    public ProductCategory getProductCategory() {
-        return productCategory;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductCategory(ProductCategory productCategory) {
-        this.productCategory = productCategory;
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Integer getMRP() {
+        return MRP;
+    }
+
+    public void setMRP(Integer mRP) {
+        this.MRP = mRP;
     }
 
     public Integer getV() {
@@ -94,6 +61,22 @@ public class AllProducts {
 
     public void setV(Integer v) {
         this.v = v;
+    }
+
+    public Size getSize() {
+        return size;
+    }
+
+    public void setSize(Size size) {
+        this.size = size;
+    }
+
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
 
 }

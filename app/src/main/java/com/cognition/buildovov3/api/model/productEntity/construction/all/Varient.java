@@ -1,29 +1,18 @@
 
 package com.cognition.buildovov3.api.model.productEntity.construction.all;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Varient {
 
-    @SerializedName("_id")
-    @Expose
     private String id;
-    @SerializedName("product")
-    @Expose
     private String product;
-    @SerializedName("varient")
-    @Expose
     private String varient;
-    @SerializedName("brand")
-    @Expose
     private String brand;
-    @SerializedName("description")
-    @Expose
     private String description;
-    @SerializedName("__v")
-    @Expose
     private Integer v;
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getId() {
         return id;
@@ -71,6 +60,14 @@ public class Varient {
 
     public void setV(Integer v) {
         this.v = v;
+    }
+
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
 
 }

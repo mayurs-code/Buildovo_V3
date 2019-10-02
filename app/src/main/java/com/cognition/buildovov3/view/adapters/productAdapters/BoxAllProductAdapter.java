@@ -16,7 +16,6 @@ import com.bumptech.glide.Glide;
 import com.cognition.buildovov3.R;
 import com.cognition.buildovov3.api.model.productEntity.construction.all.AllProducts;
 import com.cognition.buildovov3.api.model.productEntity.construction.all.Brand;
-import com.cognition.buildovov3.api.model.productEntity.construction.all.MRP;
 import com.cognition.buildovov3.values.Constants;
 
 import java.util.ArrayList;
@@ -26,7 +25,6 @@ public class BoxAllProductAdapter extends RecyclerView.Adapter<BoxAllProductAdap
 
 
     private ArrayList<AllProducts> allProducts =new ArrayList<>();
-    private ArrayList<MRP> MRP=new ArrayList<>();
     private Context mContext;
 
 
@@ -36,7 +34,7 @@ public class BoxAllProductAdapter extends RecyclerView.Adapter<BoxAllProductAdap
 
 
     }
-    int getProductBrandSize(ArrayList<AllProducts> allProducts){
+/*    int getProductBrandSize(ArrayList<AllProducts> allProducts){
         int datasetSize=0;
         for (AllProducts product:allProducts){
             for(MRP mrp:product.getMRP()){
@@ -44,7 +42,7 @@ public class BoxAllProductAdapter extends RecyclerView.Adapter<BoxAllProductAdap
             }
         }
         return datasetSize;
-    }
+    }*/
 
 
     @NonNull
@@ -57,11 +55,21 @@ public class BoxAllProductAdapter extends RecyclerView.Adapter<BoxAllProductAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Log.i(TAG, "onBindViewHolder: onResponse");
+        Log.i(TAG, "onBindViewHolder: onResponse"+allProducts.size()+" "+position);
 
-        String imageURL=Constants.BASE_IMAGE_URL+ allProducts.get(position).getImages().get(0);
-        holder.productName.setText(allProducts.get(position).getProductName());
-        holder.productMRP.setText("₹"+allProducts.get(position).getMRP().get(0).getMRP().toString()+"/-");
+        String imageURL= null;
+        Integer price=allProducts.get(position).getMRP();
+        try {
+            imageURL = Constants.BASE_IMAGE_URL+ allProducts.get(position).getBrand().getImages().get(0);
+            holder.productName.setText(allProducts.get(position).getBrand().getBrand());
+
+        } catch (NullPointerException e) {
+            imageURL = Constants.BASE_IMAGE_URL+ allProducts.get(position).getProduct().getImages().get(0);
+            holder.productName.setText(allProducts.get(position).getProduct().getProductName());
+
+
+        }
+        holder.productMRP.setText("₹"+price+"/-");
 
 
         Glide.with(mContext)

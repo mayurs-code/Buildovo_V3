@@ -166,7 +166,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ArrayList<AllProducts>> call, Throwable t) {
-                Toast.makeText(context, "ERROR OCCURED", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onFailure: GET "+ t.getMessage() );
+                Toast.makeText(context, "ERROR OCCURED GET"+t.getMessage(), Toast.LENGTH_SHORT).show();
 
 
             }

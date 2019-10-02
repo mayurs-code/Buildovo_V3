@@ -5,14 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Brand {
+public class Product {
 
     private List<String> images = null;
+    private List<String> mRP = null;
+    private String productStockType;
     private String id;
-    private String brand;
+    private String productName;
     private String description;
     private String productCategory;
-    private String product;
     private Integer v;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -24,6 +25,22 @@ public class Brand {
         this.images = images;
     }
 
+    public List<String> getMRP() {
+        return mRP;
+    }
+
+    public void setMRP(List<String> mRP) {
+        this.mRP = mRP;
+    }
+
+    public String getProductStockType() {
+        return productStockType;
+    }
+
+    public void setProductStockType(String productStockType) {
+        this.productStockType = productStockType;
+    }
+
     public String getId() {
         return id;
     }
@@ -32,12 +49,12 @@ public class Brand {
         this.id = id;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public String getDescription() {
@@ -54,14 +71,6 @@ public class Brand {
 
     public void setProductCategory(String productCategory) {
         this.productCategory = productCategory;
-    }
-
-    public String getProduct() {
-        return product;
-    }
-
-    public void setProduct(String product) {
-        this.product = product;
     }
 
     public Integer getV() {

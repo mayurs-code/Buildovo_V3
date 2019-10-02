@@ -8,7 +8,7 @@
     tools:context=".view.UI.LoginActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonLogin"
         android:layout_width="140dp"
         android:layout_height="105dp"
         android:layout_marginBottom="30dp"
