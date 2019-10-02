@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.cognition.buildovov3.R;
 import com.cognition.buildovov3.api.model.productEntity.construction.all.AllProducts;
+import com.cognition.buildovov3.api.model.productEntity.construction.all.Brand;
 import com.cognition.buildovov3.api.model.productEntity.construction.all.MRP;
 import com.cognition.buildovov3.values.Constants;
 
@@ -28,11 +29,23 @@ public class BoxAllProductAdapter extends RecyclerView.Adapter<BoxAllProductAdap
     private ArrayList<MRP> MRP=new ArrayList<>();
     private Context mContext;
 
+
     public BoxAllProductAdapter(ArrayList<AllProducts> allProducts, Context context) {
         this.allProducts = allProducts;
         mContext = context;
 
+
     }
+    int getProductBrandSize(ArrayList<AllProducts> allProducts){
+        int datasetSize=0;
+        for (AllProducts product:allProducts){
+            for(MRP mrp:product.getMRP()){
+                datasetSize++;
+            }
+        }
+        return datasetSize;
+    }
+
 
     @NonNull
     @Override
