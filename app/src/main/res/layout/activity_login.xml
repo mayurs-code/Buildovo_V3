@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/loginDrawerLayout"
     android:layout_height="match_parent"
     android:background="@color/greyLight"
     tools:context=".view.UI.LoginActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
 
     <Button
         android:id="@+id/buttonLogin"
@@ -22,7 +29,7 @@
         app:layout_constraintEnd_toStartOf="@+id/view" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/forgotPasswordTextField_Login"
         android:layout_width="wrap_content"
         android:layout_height="105dp"
         android:layout_marginHorizontal="16dp"
@@ -30,6 +37,7 @@
         android:fontFamily="@font/montserrat"
         android:gravity="center"
         android:text="@string/forgot_password"
+
         android:textColor="@color/greyMedium"
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -145,7 +153,7 @@
         android:layout_marginEnd="16dp"
         android:text="@string/skip_login"
         android:fontFamily="@font/montserrat"
-        android:textColor="@color/greyDark"
+        android:textColor="@color/greyMedium"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/textView2" />
@@ -162,5 +170,97 @@
         app:layout_constraintStart_toEndOf="@+id/google_Login"
         app:layout_constraintTop_toTopOf="@+id/google_Login" />
 
+        <TextView
+            android:id="@+id/newUserTextView_Login"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_height="0dp"
+            android:layout_marginEnd="16dp"
+            android:text="new user? Register"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:fontFamily="@font/montserrat"
+            android:textColor="@color/greyBlueDark2"
+            app:layout_constraintBottom_toBottomOf="@+id/google_Login"
+            app:layout_constraintEnd_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/google_Login" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/greyLight"
+        android:layout_gravity="end"
+
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="64dp"
+            android:layout_height="match_parent"
+            android:background="@color/greyBlueDark2"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:paddingVertical="16dp"
+            android:paddingStart="16dp"
+            android:text="Forgot\nPassword"
+            android:textColor="@color/greyMedium"
+            android:textSize="48sp"
+            app:layout_constraintStart_toEndOf="@+id/view2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:padding="16dp"
+            android:text="@string/forgotPasswordContent"
+            android:textColor="@color/greyMedium"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view2"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textColorHint="@color/greyMedium"
+            app:boxBackgroundColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view2"
+            app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/forgotPasswordEmail_Login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/greyBlueDark1"
+                android:hint="Registered Email" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/greyMedium"
+            android:textColor="@color/white"
+            app:cornerRadius="2dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/send_reset_email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

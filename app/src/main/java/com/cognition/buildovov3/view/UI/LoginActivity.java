@@ -1,10 +1,13 @@
 package com.cognition.buildovov3.view.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,7 +19,6 @@ import com.cognition.buildovov3.api.model.userEntity.UserResponse;
 import com.cognition.buildovov3.service.UserClient;
 import com.cognition.buildovov3.values.Constants;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,6 +31,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private TextInputEditText emailLogin;
     private TextInputEditText passwordLogin;
+    private TextView forgotPasswordLogin;
+    private TextView newUserRegister;
     private Button buttonLogin;
 
     @Override
@@ -42,13 +46,47 @@ public class LoginActivity extends AppCompatActivity {
     private void initialize() {
         emailLogin=findViewById(R.id.emailTextField_Login);
         passwordLogin=findViewById(R.id.passwordTextField_Login);
+        newUserRegister =findViewById(R.id.newUserTextView_Login);
+        forgotPasswordLogin=findViewById(R.id.forgotPasswordTextField_Login);
         buttonLogin=findViewById(R.id.buttonLogin);
     }
 
     private void methods() {
         skipLogin();
         login();
+        forgotPassword();
+        signup();
 
+
+    }
+
+    private void signup() {
+        newUserRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoSignupActivity();
+            }
+        });
+    }
+
+    private void gotoSignupActivity() {
+        Intent i=new Intent(LoginActivity.this,SignupActivity.class);
+        startActivity(i);
+    }
+
+    private void forgotPassword() {
+        forgotPasswordLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDrawerForgotPass();
+            }
+        });
+    }
+
+    @SuppressLint("WrongConstant")
+    public void openDrawerForgotPass(){
+        DrawerLayout drawerLayout= findViewById(R.id.loginDrawerLayout);
+        drawerLayout.openDrawer(Gravity.END);
     }
 
     private void login() {

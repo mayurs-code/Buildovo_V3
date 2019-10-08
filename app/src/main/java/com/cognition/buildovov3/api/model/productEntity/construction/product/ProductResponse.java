@@ -1,36 +1,36 @@
 
-package com.cognition.buildovov3.api.model.productEntity.construction.all;
+package com.cognition.buildovov3.api.model.productEntity.construction.product;
 
+import java.util.HashMap;
 import java.util.List;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import java.util.Map;
 
-public class Product {
+public class ProductResponse {
 
-    @SerializedName("images")
-    @Expose
     private List<String> images = null;
-    @SerializedName("MRP")
-    @Expose
-    private List<String> mRP = null;
-    @SerializedName("productStockType")
-    @Expose
+    private List<MRP> MRP = null;
     private String productStockType;
-    @SerializedName("_id")
-    @Expose
     private String id;
-    @SerializedName("productName")
-    @Expose
+
+    @Override
+    public String toString() {
+        return "ProductResponse{" +
+                "images=" + images +
+                ", MRP=" + MRP +
+                ", productStockType='" + productStockType + '\'' +
+                ", id='" + id + '\'' +
+                ", productName='" + productName + '\'' +
+                ", description='" + description + '\'' +
+                ", productCategory='" + productCategory + '\'' +
+                ", v=" + v +
+                '}';
+    }
+
     private String productName;
-    @SerializedName("description")
-    @Expose
     private String description;
-    @SerializedName("productCategory")
-    @Expose
     private String productCategory;
-    @SerializedName("__v")
-    @Expose
     private Integer v;
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public List<String> getImages() {
         return images;
@@ -40,12 +40,12 @@ public class Product {
         this.images = images;
     }
 
-    public List<String> getMRP() {
-        return mRP;
+    public List<MRP> getMRP() {
+        return MRP;
     }
 
-    public void setMRP(List<String> mRP) {
-        this.mRP = mRP;
+    public void setMRP(List<MRP> mRP) {
+        this.MRP = mRP;
     }
 
     public String getProductStockType() {
@@ -94,6 +94,14 @@ public class Product {
 
     public void setV(Integer v) {
         this.v = v;
+    }
+
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
 
 }

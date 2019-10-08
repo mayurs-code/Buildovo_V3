@@ -1,6 +1,7 @@
 package com.cognition.buildovov3.service;
 
 import com.cognition.buildovov3.api.model.productEntity.construction.all.AllProducts;
+import com.cognition.buildovov3.api.model.productEntity.construction.product.ProductResponse;
 import com.cognition.buildovov3.api.model.productEntity.construction.search.SearchedProduct;
 import com.cognition.buildovov3.api.model.userEntity.UserRequest;
 import com.cognition.buildovov3.api.model.userEntity.UserResponse;
@@ -18,10 +19,13 @@ public interface UserClient {
     @POST("user/login")
     Call<UserResponse> accountLogin(@Body UserRequest request);
 
-    @GET("material/construction-material")
+    @GET("products/products")
     Call<ArrayList<AllProducts>> getAllConstructionMaterials();
 
 
-    @GET("material/construction-material/name/{name}")
+    @GET("products/products/name/{name}")
     Call<ArrayList<SearchedProduct>> getSearchedConstructionMaterials(@Path("name") String searchName);
+
+    @GET("products/products/id/{id}")
+    Call<ProductResponse> getProductConstructionMaterials(@Path("id") String id);
 }

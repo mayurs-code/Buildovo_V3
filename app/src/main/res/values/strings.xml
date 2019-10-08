@@ -16,4 +16,6 @@
     <string name="mobile_number_hint">Contact Number</string>
     <string name="goto_login">have accont? Login</string>
     <string name="rating_product">Rating</string>
+    <string name="forgotPasswordContent">Please type your registered email address int hte field mentioned below</string>
+    <string name="send_reset_email">Send Reset Email</string>
 </resources>

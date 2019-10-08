@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @SuppressLint("WrongConstant")
-    public void openDrawer(View view){
+    public void openDrawerSideNav(View view){
         DrawerLayout drawerLayout= findViewById(R.id.mainDrawerLayout);
         drawerLayout.openDrawer(Gravity.START);
     }
@@ -205,9 +205,11 @@ public class MainActivity extends AppCompatActivity {
     void fillProductsConstruction(ArrayList<AllProducts> allProducts) {
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerProductsMain);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         boxAllProductAdapter = new BoxAllProductAdapter(allProducts, context);
         recyclerView.setAdapter(boxAllProductAdapter);
+
 
     }
 

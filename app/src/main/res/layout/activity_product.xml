@@ -10,7 +10,7 @@
 
 
     <com.smarteist.autoimageslider.SliderView
-        android:id="@+id/imageSliderProduct"
+        android:id="@+id/imageSlider_Product"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +21,6 @@
         app:sliderAutoCycleEnabled="false"
         app:sliderCircularHandlerEnabled="true"
         app:sliderIndicatorAnimationDuration="600"
-
         app:sliderIndicatorGravity="center_horizontal|left|bottom"
         app:sliderIndicatorMargin="20dp"
         app:sliderIndicatorOrientation="horizontal"
@@ -42,35 +41,109 @@
         app:checkedIconEnabled="false"
         app:checkedIconVisible="false"
         app:chipBackgroundColor="@color/decentBlue"
-        app:layout_constraintBottom_toBottomOf="@+id/imageSliderProduct"
+        app:layout_constraintBottom_toBottomOf="@+id/imageSlider_Product"
         app:layout_constraintEnd_toEndOf="parent"/>
 
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/imageSliderProduct">
-
-        <TextView
+        app:layout_constraintTop_toBottomOf="@+id/imageSlider_Product">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8dp"
-            android:textColor="@color/greyBlueDark2"
-            android:textSize="36dp"
-            android:fontFamily="@font/roboto_bold"
-            android:text="Cement Acc Cement"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_marginVertical="8dp"
-            android:layout_marginHorizontal="16dp"
-            android:justificationMode="inter_word"
-            android:textColor="@color/greyDark"
-            android:text="ACC Limited is one of the largest producers of cement in India. It's registered office is called Cement House. It is located on Maharishi Karve Road, Mumbai. The stock price of company contributes in calculating BSE Sensex. The management control of company was taken over by Swiss cement major Holcim in 2004"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="24dp"
+                android:id="@+id/productName_Product"
+                android:layout_marginVertical="8dp"
+                android:textColor="@color/greyBlueDark2"
+                android:textSize="30dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Acc Cement"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/productDescription"
+                android:layout_width="match_parent"
+                android:layout_marginVertical="8dp"
+                android:layout_marginHorizontal="24dp"
+                android:justificationMode="inter_word"
+                android:maxLines="3"
+                android:textColor="@color/greyDark"
+                android:onClick="enlargeDiscription"
+                android:text="ACC Limited is one of the largest producers of cement in India. It's registered office is called Cement House. It is located on Maharishi Karve Road, Mumbai. The stock price of company contributes in calculating BSE Sensex. The management control of company was taken over by Swiss cement major Holcim in 2004"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:paddingVertical="8dp"
+                android:paddingHorizontal="24dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="@color/greyDark"
+                    android:fontFamily="@font/roboto_medium"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Best Price : "/>
+                <TextView
+                    android:layout_gravity="center"
+                    android:id="@+id/productPrice_Product"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_height="wrap_content"
+                    android:text="Rs.100/-"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/greenDark"/>
 
 
-    </LinearLayout>
+
+            </LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:backgroundTint="@color/greenDark"
+                android:gravity="center"
+                android:text="Get a quote"
+                app:cornerRadius="16dp"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24sp"
+                    android:layout_marginVertical="8dp"
+                    android:textColor="@color/greyDark"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Similar Products"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recyclerProducts_Product"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

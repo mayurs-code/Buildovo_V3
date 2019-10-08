@@ -9,44 +9,32 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.cognition.buildovov3.R;
-import com.cognition.buildovov3.api.model.productEntity.construction.all.AllProducts;
-import com.cognition.buildovov3.api.model.productEntity.construction.all.Brand;
+import com.cognition.buildovov3.api.model.productEntity.construction.product.MRP;
 import com.cognition.buildovov3.values.Constants;
 import com.cognition.buildovov3.view.UI.ProductActivity;
 
 import java.util.ArrayList;
 
-public class BoxAllProductAdapter extends RecyclerView.Adapter<BoxAllProductAdapter.ViewHolder> {
-    private static final String TAG="Recycler Adapter";
+public class BoxSimilarProductAdapter extends RecyclerView.Adapter<BoxSimilarProductAdapter.ViewHolder> {
+    private static final String TAG="RecyclerSimilarAdapter";
 
 
-    private ArrayList<AllProducts> allProducts =new ArrayList<>();
+    private ArrayList<MRP> similarProducts = new ArrayList<MRP>();
     private Context mContext;
 
+    public BoxSimilarProductAdapter(ArrayList<MRP> similarProds, Context context) {
+        this.similarProducts = similarProds;
+        Log.i(TAG, "fillRecyclerView: WORKING state 4 " +similarProds.size());
 
-    public BoxAllProductAdapter(ArrayList<AllProducts> allProducts, Context context) {
-        this.allProducts = allProducts;
         mContext = context;
 
-
     }
-/*    int getProductBrandSize(ArrayList<AllProducts> allProducts){
-        int datasetSize=0;
-        for (AllProducts product:allProducts){
-            for(MRP mrp:product.getMRP()){
-                datasetSize++;
-            }
-        }
-        return datasetSize;
-    }*/
-
 
     @NonNull
     @Override
@@ -54,25 +42,23 @@ public class BoxAllProductAdapter extends RecyclerView.Adapter<BoxAllProductAdap
         View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.product_item_box, parent,   false);
         ViewHolder viewHolder=new ViewHolder(view);
         return new ViewHolder((view));
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        Log.i(TAG, "onBindViewHolder: onResponse"+allProducts.size()+" "+position);
+        Log.i(TAG, "fillRecyclerView: WORKING state 5");
+
 
         String imageURL= null;
-        Integer price=allProducts.get(position).getMRP();
         try {
-            imageURL = Constants.BASE_IMAGE_URL+ allProducts.get(position).getBrand().getImages().get(0);
-            holder.productName.setText(allProducts.get(position).getBrand().getBrand());
-
-        } catch (NullPointerException e) {
-            imageURL = Constants.BASE_IMAGE_URL+ allProducts.get(position).getProduct().getImages().get(0);
-            holder.productName.setText(allProducts.get(position).getProduct().getProductName());
-
-
+            imageURL = Constants.BASE_IMAGE_URL+ similarProducts.get(position).getBrand().getImages().get(0);
+            String title=similarProducts.get(position).getBrand().getBrand()+"\n"+similarProducts.get(position).getVarient().getVarient();
+            holder.productName.setText(title);
+            holder.productMRP.setText("Rs."+similarProducts.get(position).getMRP().toString()+"/-");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        holder.productMRP.setText("₹"+price+"/-");
 
 
         Glide.with(mContext)
@@ -81,17 +67,13 @@ public class BoxAllProductAdapter extends RecyclerView.Adapter<BoxAllProductAdap
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    gotoProductActivity(allProducts.get(position).getProduct().getId(),
-                            allProducts.get(position).getBrand().getId(),
-                            allProducts.get(position).getVarient().getId());
-                } catch (Exception e) {
-                    Toast.makeText(mContext, "No Brand Found", Toast.LENGTH_SHORT).show();
-                }
-
+                gotoProductActivity(similarProducts.get(position).getProduct(),
+                        similarProducts.get(position).getBrand().getId(),
+                        similarProducts.get(position).getVarient().getId());
             }
         });
     }
+
     void gotoProductActivity(String id,String brandID,String varientID)
     {
         Intent i=new Intent(mContext, ProductActivity.class);
@@ -100,15 +82,14 @@ public class BoxAllProductAdapter extends RecyclerView.Adapter<BoxAllProductAdap
         i.putExtra("varientID",varientID);
 
         mContext.startActivity(i);
+        ((ProductActivity)mContext).finish();
     }
-
-
 
     @Override
     public int getItemCount() {
-        int size=(allProducts!=null?allProducts.size():0);
-        Log.i(TAG, "getItemCount: "+size);
-        return size;
+        Log.i(TAG, "fillRecyclerView: WORKING state 3" + similarProducts.size());
+
+        return similarProducts.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

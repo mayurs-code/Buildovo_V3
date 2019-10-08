@@ -1,33 +1,20 @@
 
-package com.cognition.buildovov3.api.model.productEntity.construction.all;
+package com.cognition.buildovov3.api.model.productEntity.construction.product;
 
+import java.util.HashMap;
 import java.util.List;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import java.util.Map;
 
 public class Brand {
 
-    @SerializedName("images")
-    @Expose
     private List<String> images = null;
-    @SerializedName("_id")
-    @Expose
     private String id;
-    @SerializedName("brand")
-    @Expose
     private String brand;
-    @SerializedName("description")
-    @Expose
     private String description;
-    @SerializedName("productCategory")
-    @Expose
     private String productCategory;
-    @SerializedName("product")
-    @Expose
     private String product;
-    @SerializedName("__v")
-    @Expose
     private Integer v;
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public List<String> getImages() {
         return images;
@@ -83,6 +70,14 @@ public class Brand {
 
     public void setV(Integer v) {
         this.v = v;
+    }
+
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
 
 }

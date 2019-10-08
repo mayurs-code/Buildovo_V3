@@ -9,14 +9,19 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.cognition.buildovov3.R;
+import com.cognition.buildovov3.values.Constants;
 import com.smarteist.autoimageslider.SliderViewAdapter;
+
+import java.util.ArrayList;
 
 public class ImageSliderProductAdapter extends SliderViewAdapter<ImageSliderProductAdapter.SliderAdapterVH> {
 
     private Context context;
+    ArrayList<String> imageURLs;
 
-    public ImageSliderProductAdapter(Context context) {
+    public ImageSliderProductAdapter(Context context, ArrayList<String> imageURLs) {
         this.context = context;
+        this.imageURLs = imageURLs;
     }
 
     @Override
@@ -28,36 +33,18 @@ public class ImageSliderProductAdapter extends SliderViewAdapter<ImageSliderProd
     @Override
     public void onBindViewHolder(SliderAdapterVH viewHolder, int position) {
 
-        switch (position) {
-            case 0:
-                Glide.with(viewHolder.itemView)
-                        .load("https://images.pexels.com/photos/218983/pexels-photo-218983.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
-                        .into(viewHolder.imageViewBackground);
-                break;
-            case 1:
-                Glide.with(viewHolder.itemView)
-                        .load("https://images.pexels.com/photos/747964/pexels-photo-747964.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260")
-                        .into(viewHolder.imageViewBackground);
-                break;
-            case 2:
-                Glide.with(viewHolder.itemView)
-                        .load("https://images.pexels.com/photos/929778/pexels-photo-929778.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
-                        .into(viewHolder.imageViewBackground);
-                break;
-            default:
-                Glide.with(viewHolder.itemView)
-                        .load("https://images.pexels.com/photos/218983/pexels-photo-218983.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
-                        .into(viewHolder.imageViewBackground);
-                break;
 
-        }
+                Glide.with(viewHolder.itemView)
+                        .load(Constants.BASE_IMAGE_URL +imageURLs.get(position))
+                        .into(viewHolder.imageViewBackground);
+
 
     }
 
     @Override
     public int getCount() {
         //slider view count could be dynamic size
-        return 4;
+        return imageURLs.size();
     }
 
     class SliderAdapterVH extends SliderViewAdapter.ViewHolder {
