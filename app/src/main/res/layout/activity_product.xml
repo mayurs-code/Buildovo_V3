@@ -9,51 +9,73 @@
 
 
 
-    <com.smarteist.autoimageslider.SliderView
-        android:id="@+id/imageSlider_Product"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:sliderAnimationDuration="600"
-        app:sliderAutoCycleDirection="back_and_forth"
-        app:sliderAutoCycleEnabled="false"
-        app:sliderCircularHandlerEnabled="true"
-        app:sliderIndicatorAnimationDuration="600"
-        app:sliderIndicatorGravity="center_horizontal|left|bottom"
-        app:sliderIndicatorMargin="20dp"
-        app:sliderIndicatorOrientation="horizontal"
-        app:sliderIndicatorPadding="3dp"
-        app:sliderIndicatorRadius="1.6dp"
-        app:sliderIndicatorSelectedColor="@color/decentBlue"
-        app:sliderIndicatorUnselectedColor="@color/white"
-        app:sliderScrollTimeInSec="2"
-        app:sliderStartAutoCycle="true" />
-    <com.google.android.material.chip.Chip
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
-        android:checkable="false"
-        android:checked="true"
-        android:text="@string/rating_product"
-        android:textColor="@color/white"
-        app:checkedIconEnabled="false"
-        app:checkedIconVisible="false"
-        app:chipBackgroundColor="@color/decentBlue"
-        app:layout_constraintBottom_toBottomOf="@+id/imageSlider_Product"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
-
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/imageSlider_Product">
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/imageSlider_Layout"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:src="@drawable/back"
+                    android:background="@color/white"
+                    android:scaleType="fitStart"
+                    android:tint="@color/greyDark"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="4dp"
+                    android:layout_height="wrap_content"/>
+                <com.smarteist.autoimageslider.SliderView
+                    android:id="@+id/imageSlider_Product"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:sliderAnimationDuration="600"
+                    app:sliderAutoCycleDirection="back_and_forth"
+                    app:sliderAutoCycleEnabled="false"
+                    app:sliderCircularHandlerEnabled="true"
+                    app:sliderIndicatorAnimationDuration="600"
+                    app:sliderIndicatorGravity="center_horizontal|left|bottom"
+                    app:sliderIndicatorMargin="20dp"
+                    app:sliderIndicatorOrientation="horizontal"
+                    app:sliderIndicatorPadding="3dp"
+                    app:sliderIndicatorRadius="1.6dp"
+                    app:sliderIndicatorSelectedColor="@color/decentBlue"
+                    app:sliderIndicatorUnselectedColor="@color/white"
+                    app:sliderScrollTimeInSec="2"
+                    app:sliderStartAutoCycle="true" />
+
+
+            </LinearLayout>
+
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:checkable="false"
+                android:checked="true"
+                android:text="@string/rating_product"
+                android:textColor="@color/white"
+                app:checkedIconEnabled="false"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="@color/decentBlue"
+                app:layout_constraintBottom_toBottomOf="@+id/imageSlider_Layout"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -61,57 +83,62 @@
                 android:id="@+id/productName_Product"
                 android:layout_marginVertical="8dp"
                 android:textColor="@color/greyBlueDark2"
-                android:textSize="30dp"
+                android:textSize="24dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="Acc Cement"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
+
             <TextView
                 android:id="@+id/productDescription"
                 android:layout_width="match_parent"
                 android:layout_marginVertical="8dp"
                 android:layout_marginHorizontal="24dp"
                 android:justificationMode="inter_word"
-                android:maxLines="3"
+                android:maxLines="2"
+                android:textSize="13sp"
                 android:textColor="@color/greyDark"
                 android:onClick="enlargeDiscription"
                 android:text="ACC Limited is one of the largest producers of cement in India. It's registered office is called Cement House. It is located on Maharishi Karve Road, Mumbai. The stock price of company contributes in calculating BSE Sensex. The management control of company was taken over by Swiss cement major Holcim in 2004"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
-                android:paddingVertical="8dp"
+                android:paddingVertical="2dp"
                 android:paddingHorizontal="24dp"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:textColor="@color/greyDark"
                     android:fontFamily="@font/roboto_medium"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Best Price : "/>
+                    android:text="Best Price : " />
+
                 <TextView
                     android:layout_gravity="center"
                     android:id="@+id/productPrice_Product"
                     android:layout_width="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="22sp"
                     android:layout_height="wrap_content"
                     android:text="Rs.100/-"
                     android:fontFamily="@font/roboto_medium"
-                    android:textColor="@color/greenDark"/>
-
+                    android:textColor="@color/greenDark" />
 
 
             </LinearLayout>
+
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:backgroundTint="@color/greenDark"
+                app:rippleColor="@color/decentBlue"
                 android:gravity="center"
                 android:text="Get a quote"
-                app:cornerRadius="16dp"
+                app:cornerRadius="2dp"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -138,12 +165,12 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/recyclerProducts_Product"/>
+                android:id="@+id/recyclerProducts_Product" />
 
 
         </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

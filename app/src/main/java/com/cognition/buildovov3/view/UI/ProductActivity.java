@@ -1,8 +1,10 @@
 package com.cognition.buildovov3.view.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -38,6 +40,7 @@ public class ProductActivity extends AppCompatActivity {
     private String ID;
     private String brandID;
     private String varientID;
+    private String mrpID;
     private ImageSliderProductAdapter sliderAdapter;
     private ProductResponse product;
     private String productName;
@@ -71,6 +74,8 @@ public class ProductActivity extends AppCompatActivity {
         ID=getIntent().getStringExtra("ID");
         brandID=getIntent().getStringExtra("brandID");
         varientID=getIntent().getStringExtra("varientID");
+        mrpID=getIntent().getStringExtra("mrpID");
+
 
     }
 
@@ -95,6 +100,7 @@ public class ProductActivity extends AppCompatActivity {
         productsSimilarproduct.addAll(product.getMRP());
         Log.i(TAG, "fillRecyclerView: WORKING state 2"+ productsSimilarproduct.get(0).toString());
         recyclerView_Product.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView_Product.setLayoutManager(new GridLayoutManager(this,3));
 
         similarProductAdapter =new BoxSimilarProductAdapter(productsSimilarproduct,this);
         recyclerView_Product.setAdapter(similarProductAdapter);
@@ -110,7 +116,7 @@ public class ProductActivity extends AppCompatActivity {
         try {
             for(MRP mrp:product.getMRP())
             {
-                if (mrp.getBrand().getId().equals(brandID)&&mrp.getVarient().getId().equals(varientID)){
+                if (mrp.getId().equals(mrpID)){
                     productName =mrp.getBrand().getBrand()+"\n"+mrp.getVarient().getVarient();
                     productMrp="Rs."+mrp.getMRP()+"/-";
                     productDescription=mrp.getBrand().getDescription();

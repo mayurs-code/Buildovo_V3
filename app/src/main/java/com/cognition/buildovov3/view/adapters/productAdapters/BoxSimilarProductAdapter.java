@@ -69,17 +69,19 @@ public class BoxSimilarProductAdapter extends RecyclerView.Adapter<BoxSimilarPro
             public void onClick(View view) {
                 gotoProductActivity(similarProducts.get(position).getProduct(),
                         similarProducts.get(position).getBrand().getId(),
-                        similarProducts.get(position).getVarient().getId());
+                        similarProducts.get(position).getVarient().getId(),
+                        similarProducts.get(position).getId());
             }
         });
     }
 
-    void gotoProductActivity(String id,String brandID,String varientID)
+    void gotoProductActivity(String id,String brandID,String varientID,String mrpID)
     {
         Intent i=new Intent(mContext, ProductActivity.class);
         i.putExtra("ID",id);
         i.putExtra("brandID",brandID);
         i.putExtra("varientID",varientID);
+        i.putExtra("mrpID",mrpID);
 
         mContext.startActivity(i);
         ((ProductActivity)mContext).finish();

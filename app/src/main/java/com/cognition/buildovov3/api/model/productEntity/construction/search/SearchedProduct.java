@@ -1,60 +1,32 @@
 
 package com.cognition.buildovov3.api.model.productEntity.construction.search;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class SearchedProduct {
 
-    @SerializedName("images")
-    @Expose
-    private List<String> images = null;
-    @SerializedName("MRP")
-    @Expose
-    private List<MRP> mRP = null;
-    @SerializedName("productStockType")
-    @Expose
-    private String productStockType;
     @SerializedName("_id")
     @Expose
     private String id;
-    @SerializedName("productName")
+    @SerializedName("brand")
     @Expose
-    private String productName;
-    @SerializedName("description")
+    private Brand brand;
+    @SerializedName("varient")
     @Expose
-    private String description;
-    @SerializedName("productCategory")
+    private Varient varient;
+    @SerializedName("product")
     @Expose
-    private String productCategory;
+    private Product product;
+    @SerializedName("MRP")
+    @Expose
+    private Integer mRP;
     @SerializedName("__v")
     @Expose
     private Integer v;
-
-    public List<String> getImages() {
-        return images;
-    }
-
-    public void setImages(List<String> images) {
-        this.images = images;
-    }
-
-    public List<MRP> getMRP() {
-        return mRP;
-    }
-
-    public void setMRP(List<MRP> mRP) {
-        this.mRP = mRP;
-    }
-
-    public String getProductStockType() {
-        return productStockType;
-    }
-
-    public void setProductStockType(String productStockType) {
-        this.productStockType = productStockType;
-    }
+    @SerializedName("size")
+    @Expose
+    private String size;
 
     public String getId() {
         return id;
@@ -64,28 +36,36 @@ public class SearchedProduct {
         this.id = id;
     }
 
-    public String getProductName() {
-        return productName;
+    public Brand getBrand() {
+        return brand;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 
-    public String getDescription() {
-        return description;
+    public Varient getVarient() {
+        return varient;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setVarient(Varient varient) {
+        this.varient = varient;
     }
 
-    public String getProductCategory() {
-        return productCategory;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductCategory(String productCategory) {
-        this.productCategory = productCategory;
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Integer getMRP() {
+        return mRP;
+    }
+
+    public void setMRP(Integer mRP) {
+        this.mRP = mRP;
     }
 
     public Integer getV() {
@@ -94,6 +74,14 @@ public class SearchedProduct {
 
     public void setV(Integer v) {
         this.v = v;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 
 }

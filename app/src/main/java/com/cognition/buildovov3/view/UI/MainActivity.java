@@ -1,13 +1,16 @@
 package com.cognition.buildovov3.view.UI;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -25,7 +28,7 @@ import com.cognition.buildovov3.api.model.userEntity.UserRequest;
 import com.cognition.buildovov3.api.model.userEntity.UserResponse;
 import com.cognition.buildovov3.service.UserClient;
 import com.cognition.buildovov3.values.Constants;
-import com.cognition.buildovov3.view.adapters.productAdapters.BoxAllProductAdapter;
+import com.cognition.buildovov3.view.adapters.productAdapters.BoxAllProductRecyclerAdapter;
 import com.cognition.buildovov3.view.adapters.productAdapters.BoxSearchProductAdapter;
 
 import com.google.android.material.navigation.NavigationView;
@@ -44,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     Context context;
     private ArrayList<AllProducts> constructionAllProducts;
     private ArrayList<SearchedProduct> constructionSearchProducts;
-    BoxAllProductAdapter boxAllProductAdapter;
+    BoxAllProductRecyclerAdapter boxAllProductRecyclerAdapter;
     BoxSearchProductAdapter boxSearchProductAdapter;
 
     @Override
@@ -188,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<ArrayList<SearchedProduct>> call, Response<ArrayList<SearchedProduct>> response) {
                 constructionSearchProducts = response.body();
                 for (SearchedProduct product : constructionSearchProducts)
-                    Log.d(TAG, "onSearchProd: " + product.getProductName());
+                    Log.d(TAG, "onSearchProd: " + product.getProduct().getProductName());
                 fillSearchedProductsConstruction(constructionSearchProducts);
             }
 
@@ -207,8 +210,21 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerProductsMain);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-        boxAllProductAdapter = new BoxAllProductAdapter(allProducts, context);
-        recyclerView.setAdapter(boxAllProductAdapter);
+        {
+            recyclerView.setLayoutManager(new GridLayoutManager(context, 3));
+            recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+                private int space=8;
+                @Override
+                public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+                    outRect.left = space;
+                    outRect.right = space;
+                    outRect.bottom = space;
+                    outRect.top = space;
+                }
+            });
+        }
+        boxAllProductRecyclerAdapter = new BoxAllProductRecyclerAdapter(allProducts, context);
+        recyclerView.setAdapter(boxAllProductRecyclerAdapter);
 
 
     }
@@ -217,6 +233,7 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerProductsMain);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
         boxSearchProductAdapter = new BoxSearchProductAdapter(searchedProducts, context);
         recyclerView.setAdapter(boxSearchProductAdapter);
 

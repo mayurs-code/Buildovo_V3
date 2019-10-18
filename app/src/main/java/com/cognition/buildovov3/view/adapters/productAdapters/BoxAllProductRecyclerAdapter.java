@@ -17,13 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.cognition.buildovov3.R;
 import com.cognition.buildovov3.api.model.productEntity.construction.all.AllProducts;
-import com.cognition.buildovov3.api.model.productEntity.construction.all.Brand;
 import com.cognition.buildovov3.values.Constants;
 import com.cognition.buildovov3.view.UI.ProductActivity;
 
 import java.util.ArrayList;
 
-public class BoxAllProductAdapter extends RecyclerView.Adapter<BoxAllProductAdapter.ViewHolder> {
+public class BoxAllProductRecyclerAdapter extends RecyclerView.Adapter<BoxAllProductRecyclerAdapter.ViewHolder> {
     private static final String TAG="Recycler Adapter";
 
 
@@ -31,7 +30,7 @@ public class BoxAllProductAdapter extends RecyclerView.Adapter<BoxAllProductAdap
     private Context mContext;
 
 
-    public BoxAllProductAdapter(ArrayList<AllProducts> allProducts, Context context) {
+    public BoxAllProductRecyclerAdapter(ArrayList<AllProducts> allProducts, Context context) {
         this.allProducts = allProducts;
         mContext = context;
 
@@ -84,7 +83,8 @@ public class BoxAllProductAdapter extends RecyclerView.Adapter<BoxAllProductAdap
                 try {
                     gotoProductActivity(allProducts.get(position).getProduct().getId(),
                             allProducts.get(position).getBrand().getId(),
-                            allProducts.get(position).getVarient().getId());
+                            allProducts.get(position).getVarient().getId(),
+                            allProducts.get(position).getId());
                 } catch (Exception e) {
                     Toast.makeText(mContext, "No Brand Found", Toast.LENGTH_SHORT).show();
                 }
@@ -92,12 +92,13 @@ public class BoxAllProductAdapter extends RecyclerView.Adapter<BoxAllProductAdap
             }
         });
     }
-    void gotoProductActivity(String id,String brandID,String varientID)
+    void gotoProductActivity(String id,String brandID,String varientID,String mrpID)
     {
         Intent i=new Intent(mContext, ProductActivity.class);
         i.putExtra("ID",id);
         i.putExtra("brandID",brandID);
         i.putExtra("varientID",varientID);
+        i.putExtra("mrpID",mrpID);
 
         mContext.startActivity(i);
     }
@@ -125,5 +126,6 @@ public class BoxAllProductAdapter extends RecyclerView.Adapter<BoxAllProductAdap
             productImage = itemView.findViewById(R.id.product_Box_image);
             parentLayout = itemView.findViewById(R.id.parent_Box_layout);
         }
+
     }
 }

@@ -19,13 +19,13 @@ public interface UserClient {
     @POST("user/login")
     Call<UserResponse> accountLogin(@Body UserRequest request);
 
-    @GET("products/products")
+    @GET("products")
     Call<ArrayList<AllProducts>> getAllConstructionMaterials();
 
 
-    @GET("products/products/name/{name}")
+    @GET("products/name/{name}")
     Call<ArrayList<SearchedProduct>> getSearchedConstructionMaterials(@Path("name") String searchName);
 
-    @GET("products/products/id/{id}")
+    @GET("products/id/{id}")
     Call<ProductResponse> getProductConstructionMaterials(@Path("id") String id);
 }

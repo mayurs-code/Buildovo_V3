@@ -3,15 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parent_Box_layout"
     android:orientation="vertical"
-    android:padding="8dp"
-    android:layout_width="wrap_content"
+    android:gravity="center"
+    android:layout_gravity="center_horizontal"
+    android:clipToPadding="false"
+    android:padding="4dp"
+    android:elevation="8dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="130dp"
         app:cardBackgroundColor="@color/white"
-        app:cardElevation="0dp"
+        android:layout_gravity="center"
+        app:cardElevation="8dp"
         app:cardCornerRadius="5dp">
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,34 +27,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:scaleType="centerCrop"
+                android:scaleType="fitCenter"
                 android:src="@drawable/loading_image" />
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:orientation="vertical"
-        android:layout_height="50dp">
+        android:layout_height="match_parent">
+
         <TextView
             android:id="@+id/product_Box_Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/montserrat"
             android:maxLines="2"
-            android:text="Sample Product"
-            android:textColor="@color/greyDark"
             android:paddingVertical="2dp"
-            android:fontFamily="@font/roboto_medium"
-            android:textSize="10sp"/>
+            android:text="Sample Product"
+            android:textAlignment="center"
+            android:textColor="@color/greyDark"
+            android:textSize="10sp" />
         <TextView
             android:id="@+id/product_Box_MRP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Product Price"
+            android:layout_gravity="center"
             android:textColor="@color/black"
             android:paddingVertical="0dp"
             android:fontFamily="@font/roboto_bold"
-            android:textSize="12sp"/>
+            android:textSize="14sp"/>
     </LinearLayout>
 
 </LinearLayout>
