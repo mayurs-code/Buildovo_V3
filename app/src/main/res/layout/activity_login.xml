@@ -145,7 +145,18 @@
 
     </LinearLayout>
 
-    <TextView
+        <EditText
+            android:id="@+id/ip_address_text"
+            android:layout_margin="16dp"
+            android:textColor="@color/greyBlueDark2"
+            android:textColorHint="@color/greyMedium"
+            android:layout_width="match_parent"
+            android:hint="TYPE THE IP"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
         android:id="@+id/skip_Login"
         android:layout_width="wrap_content"
         android:gravity="center"

@@ -6,10 +6,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "Login Activity";
-
+    private EditText ip_address_text;
     private TextInputEditText emailLogin;
     private TextInputEditText passwordLogin;
     private TextView forgotPasswordLogin;
@@ -44,11 +47,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initialize() {
-        emailLogin=findViewById(R.id.emailTextField_Login);
-        passwordLogin=findViewById(R.id.passwordTextField_Login);
-        newUserRegister =findViewById(R.id.newUserTextView_Login);
-        forgotPasswordLogin=findViewById(R.id.forgotPasswordTextField_Login);
-        buttonLogin=findViewById(R.id.buttonLogin);
+        emailLogin = findViewById(R.id.emailTextField_Login);
+        ip_address_text = findViewById(R.id.ip_address_text);
+        passwordLogin = findViewById(R.id.passwordTextField_Login);
+        newUserRegister = findViewById(R.id.newUserTextView_Login);
+        forgotPasswordLogin = findViewById(R.id.forgotPasswordTextField_Login);
+        buttonLogin = findViewById(R.id.buttonLogin);
     }
 
     private void methods() {
@@ -57,6 +61,15 @@ public class LoginActivity extends AppCompatActivity {
         forgotPassword();
         signup();
 
+
+    }
+
+    private void changeIP() {
+        Log.d(TAG, "changeIP: PIZZA IP 1" + Constants.IP);
+
+
+        Constants.IP = ip_address_text.getText().toString();
+        System.out.println(Constants.IP);
 
     }
 
@@ -70,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void gotoSignupActivity() {
-        Intent i=new Intent(LoginActivity.this,SignupActivity.class);
+        Intent i = new Intent(LoginActivity.this, SignupActivity.class);
         startActivity(i);
     }
 
@@ -84,34 +97,35 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @SuppressLint("WrongConstant")
-    public void openDrawerForgotPass(){
-        DrawerLayout drawerLayout= findViewById(R.id.loginDrawerLayout);
+    public void openDrawerForgotPass() {
+        DrawerLayout drawerLayout = findViewById(R.id.loginDrawerLayout);
         drawerLayout.openDrawer(Gravity.END);
     }
 
     private void login() {
-        final String email=emailLogin.getText().toString();
-        final String password=passwordLogin.getText().toString();
+        final String email = emailLogin.getText().toString();
+        final String password = passwordLogin.getText().toString();
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendUserLoginCredentials(email,password);
+                sendUserLoginCredentials(email, password);
+
 
             }
         });
     }
 
     private void sendUserLoginCredentials(String email, String password) {
-        Retrofit.Builder builder=new Retrofit.Builder()
+        Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create());
-        Retrofit retrofit=builder.build();
-        UserClient client=retrofit.create(UserClient.class);
-        Call<UserResponse> call=client.accountLogin(new UserRequest(email,password));
+        Retrofit retrofit = builder.build();
+        UserClient client = retrofit.create(UserClient.class);
+        Call<UserResponse> call = client.accountLogin(new UserRequest(email, password));
         call.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-                Log.d(TAG, "onResponse: "+response.body());
+                Log.d(TAG, "onResponse: " + response.body());
                 gotoMainAvtivity(response.body());
             }
 
@@ -123,26 +137,32 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void gotoMainAvtivity(UserResponse body) {
-        Intent i=new Intent(this,MainActivity.class);
+        Log.d(TAG, "changeIP: PIZZA IP 4" + Constants.IP);
+
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
     private void skipLogin() {
-        TextView skipText=(TextView)findViewById(R.id.skip_Login);
+        TextView skipText = (TextView) findViewById(R.id.skip_Login);
         skipText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "changeIP: PIZZA IP 3" + Constants.IP);
+
                 gotoMainAvtivity();
             }
         });
     }
 
     private void gotoMainAvtivity() {
-        Intent i=new Intent(this,MainActivity.class);
+        Log.d(TAG, "changeIP: PIZZA IP 2" + Constants.IP);
+
+        changeIP();
+
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
-
-
 
 
 }
